@@ -1,0 +1,11 @@
+    `SELECT sbj.idSubject, sbj.subjectName, coe.coefficient, ccty.idClassroomCategory, 
+            ccty.classroomCategoryName, null as idTeachedSubjects ,coe.idCoefficient,
+            tea.idTeacher, tea.teacherName, tcys.idTeacherClassAYearSubject        
+     FROM Coefficient  coe, ClassroomCategory ccty, Subject sbj, 
+          TeacherClassAYearSubject tcys, Teacher tea   
+     WHERE coe.classroomCategory = ${idClassroomCategory} and 
+           tcys.classAYearId = ${idClassAYear} and 
+           tea.idTeacher = tcys.teacherId and tcys.subjectId = sbj.idSubject  and
+           coe.classroomCategory = ccty.idClassroomCategory and 
+           coe.subject = sbj.idSubject `
+   ;
